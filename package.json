@@ -1,0 +1,42 @@
+{
+  "name": "aibot-connect",
+  "version": "0.1.0",
+  "description": "企业微信 AI 机器人消息调度框架：接收、分发、回复，让业务代码专注在模型和业务逻辑",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "README.md"],
+  "engines": { "node": ">=20.6.0" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xesam/aibot-connect"
+  },
+  "scripts": {
+    "dev": "tsx --env-file=.env watch src/index.ts",
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "example:basic": "tsx --env-file=.env examples/basic.ts",
+    "example:router": "tsx --env-file=.env examples/router-bridge.ts"
+  },
+  "keywords": ["wecom", "wechat-work", "chatbot", "enterprise-wechat", "ai-agent", "claude-code", "codex"],
+  "license": "ISC",
+  "dependencies": {
+    "@wecom/aibot-node-sdk": "^1.0.5"
+  },
+  "optionalDependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.90"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2",
+    "vitest": "^3.0.0"
+  }
+}
