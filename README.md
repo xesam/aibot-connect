@@ -35,6 +35,31 @@ npm install aibot-connect
 npm install @anthropic-ai/claude-agent-sdk
 ```
 
+
+## 命令行快速启动（零代码）
+
+全局安装后，无需编写任何脚本即可启动连接：
+
+```bash
+npm install -g aibot-connect
+```
+
+在项目目录中创建 `.env` 文件配置凭证，然后运行：
+
+```bash
+aibot-connect --agent claude                # 使用 Claude Code
+aibot-connect --agent codex                 # 使用 Codex
+aibot-connect --agent claude --model claude-opus-4-6  # 指定模型
+```
+
+也可直接通过命令行传参（优先级高于 .env）：
+
+```bash
+aibot-connect --agent codex --bot-id xxx --secret yyy
+```
+
+支持的命令：`/reset` `/stop` `/status` `/help`
+
 ---
 
 ## 三、快速开始（RouterAgent 一行接管）

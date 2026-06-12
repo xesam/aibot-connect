@@ -1,6 +1,6 @@
 {
   "name": "aibot-connect",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "企业微信 AI 机器人消息调度框架：接收、分发、回复，让业务代码专注在模型和业务逻辑",
   "type": "module",
   "main": "./dist/index.js",
@@ -10,6 +10,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
+  },
+  "bin": {
+    "aibot-connect": "./dist/cli.js"
   },
   "files": ["dist", "README.md"],
   "engines": { "node": ">=20.6.0" },
