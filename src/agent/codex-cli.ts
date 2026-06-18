@@ -64,9 +64,10 @@ export class CodexCliAgent implements Agent {
   }
 
   async *query(prompt: string, options: AgentOptions): AgentStream {
-    const args = options.resume ? ['resume', options.resume, '-'] : ['exec']
+    const args = options.resume ? ['exec', 'resume', options.resume, prompt] : ['exec']
 
     args.push('--json')
+    args.push('--skip-git-repo-check')
 
     if (this.config.model) {
       args.push('--model', this.config.model)
@@ -78,7 +79,7 @@ export class CodexCliAgent implements Agent {
       command: 'codex',
       args,
       cwd: options.cwd ?? this.config.cwd,
-      stdin: prompt,
+      stdin: options.resume ? '' : prompt,
       abortController: options.abortController,
       parseLine: parseCodexStreamLine,
     })

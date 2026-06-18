@@ -150,18 +150,18 @@ describe('CodexCliAgent query args structure', () => {
   it('new session: args are ["exec", "--json"]', async () => {
     const agent = new CodexCliAgent({ cwd: '/tmp' })
     await drainStream(agent.query('hello', {}))
-    expect(capturedOpts.args).toEqual(['exec', '--json'])
+    expect(capturedOpts.args).toEqual(['exec', '--json', '--skip-git-repo-check'])
   })
 
   it('new session with model: args include --model after --json', async () => {
     const agent = new CodexCliAgent({ cwd: '/tmp', model: 'gpt-4o' })
     await drainStream(agent.query('hello', {}))
-    expect(capturedOpts.args).toEqual(['exec', '--json', '--model', 'gpt-4o'])
+    expect(capturedOpts.args).toEqual(['exec', '--json', '--skip-git-repo-check', '--model', 'gpt-4o'])
   })
 
-  it('resume session: args are ["resume", "<id>", "-", "--json"]', async () => {
+  it('resume session: args are ["exec", "resume", "<id>", "<prompt>", "--json", "--skip-git-repo-check"]', async () => {
     const agent = new CodexCliAgent({ cwd: '/tmp' })
     await drainStream(agent.query('follow-up', { resume: 'sess-abc123' }))
-    expect(capturedOpts.args).toEqual(['resume', 'sess-abc123', '-', '--json'])
+    expect(capturedOpts.args).toEqual(['exec', 'resume', 'sess-abc123', 'follow-up', '--json', '--skip-git-repo-check'])
   })
 })
